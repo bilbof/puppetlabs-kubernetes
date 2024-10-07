@@ -30,9 +30,9 @@ nodeRegistration:
     - name: cloud-config
       value: <%= @cloud_config %>
     <%- end -%>
-    # TODO: Breaking change
-    <%- @kubelet_extra_arguments.each do |arg| -%>
-    <%= arg %>
+    <%- @kubelet_extra_arguments.each do |name, value| -%>
+    - name: <%= name %>
+      value: <%= value %>
     <%- end -%>
 <% if @skip_phases -%>
 skipPhases:

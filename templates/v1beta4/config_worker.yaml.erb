@@ -32,14 +32,17 @@ nodeRegistration:
   <%- end -%>
   kubeletExtraArgs:
     <%- if @cloud_provider -%>
-    cloud-provider: <%= @cloud_provider %>
+    - name: cloud-provider
+      value: <%= @cloud_provider %>
+    <%- end -%>
     <%- if @cloud_config -%>
-    cloud-config: <%= @cloud_config %>
+    - name: cloud-config
+      value: <%= @cloud_config %>
     <%- end -%>
+    <%- @kubelet_extra_arguments.each do |name, value| -%>
+    - name: <%= name %>
+      value: <%= value %>
     <%- end -%>
-    <%- @kubelet_extra_arguments.each do |arg| -%>
-    <%= arg %>
-    <%- end %>
 <% if @feature_gates -%>
 featureGates: <%= @feature_gates %>
 <% end -%>
