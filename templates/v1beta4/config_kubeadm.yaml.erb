@@ -52,7 +52,6 @@ timeouts:
 apiVersion: kubeadm.k8s.io/v1beta4
 kind: ClusterConfiguration
 apiServer:
-  timeoutForControlPlane: 4m0s
 <%- if @apiserver_cert_extra_sans -%>
   certSANs:
   <%- @apiserver_cert_extra_sans.each do |san| -%>
