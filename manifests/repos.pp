@@ -64,7 +64,7 @@ class kubernetes::repos (
       'Debian': {
         apt::source { 'kubernetes':
           location => pick($kubernetes_apt_location,'https://pkgs.k8s.io/core:/stable:/v1.31/deb/'),
-          repos    => pick($kubernetes_apt_repos,''),
+          repos    => '',
           release  => pick($kubernetes_apt_release,'/'),
           key      => {
             name => 'kubernetes-apt-keyring.asc',
