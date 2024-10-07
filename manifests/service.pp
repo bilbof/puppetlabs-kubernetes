@@ -67,6 +67,7 @@ class kubernetes::service (
   Optional[String] $https_proxy                         = $kubernetes::https_proxy,
   Optional[String] $no_proxy                            = $kubernetes::no_proxy,
   Boolean $kubelet_use_proxy                            = $kubernetes::kubelet_use_proxy,
+  String $node_ip                                       = $kubernetes::node_ip,
 ) {
   file { '/etc/systemd/system/kubelet.service.d':
     ensure => directory,

@@ -593,6 +593,9 @@
 # [*wait_for_default_sa_try_sleep*]
 #   Defaults to 6
 #
+# [*node_ip*]
+#   Internal Node IP. Defaults to primary ipV4
+#
 # Authors
 # -------
 #
@@ -754,6 +757,7 @@ class kubernetes (
   Integer $wait_for_default_sa_tries                      = 5,
   Integer $wait_for_default_sa_try_sleep                  = 6,
   Hash[String[1], Boolean] $feature_gates                 = {},
+  Optional[String] $node_ip                               = $facts["networking"]["ip"],
 ) {
   if !$facts['os']['family'] in ['Debian', 'RedHat'] {
     notify { "The OS family ${facts['os']['family']} is not supported by this module": }
