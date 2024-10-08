@@ -5,7 +5,6 @@ kind: JoinConfiguration
 clusterName: <%= @kubernetes_cluster_name %>
 <%- end -%>
 discovery:
-  timeout: 5m0s
   bootstrapToken:
     token: <%= @discovery_token %>
     apiServerEndpoint: '<%= @controller_address %>'
