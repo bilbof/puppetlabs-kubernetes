@@ -1,0 +1,4 @@
+# This is a file that the user can use for overrides of the kubelet args as a last resort. Preferably, the user should use
+# the .NodeRegistration.KubeletExtraArgs object in the configuration files instead. KUBELET_EXTRA_ARGS should be sourced from this file.
+# Settings KUBELET_EXTRA_ARGS elsewhere like 0-containerd does nothing since it gets overridden by kubeadm.
+KUBELET_EXTRA_ARGS=--runtime-request-timeout=15m --container-runtime-endpoint=unix:///run/containerd/containerd.sock --node-ip=<%= @node_ip %>

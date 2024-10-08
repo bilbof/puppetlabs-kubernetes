@@ -209,6 +209,14 @@ class kubernetes::service (
     }
   }
 
+  file { "/etc/default/kubelet":
+    content => template("${module_name}/kubelet.erb"),
+    notify  => [Exec['kubernetes-systemd-reload'], Service['kubelet']],
+    owner   => root,
+    group   => root,
+    mode    => '0644',
+  }
+
   service { 'kubelet':
     enable  => true,
     require => Exec['kubernetes-systemd-reload'],
