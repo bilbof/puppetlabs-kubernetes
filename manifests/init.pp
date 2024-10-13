@@ -758,6 +758,7 @@ class kubernetes (
   Integer $wait_for_default_sa_try_sleep                  = 6,
   Hash[String[1], Boolean] $feature_gates                 = {},
   Optional[String] $node_ip                               = $facts["networking"]["ip"],
+  Optional[String] $extra_args                            = "",
 ) {
   if !$facts['os']['family'] in ['Debian', 'RedHat'] {
     notify { "The OS family ${facts['os']['family']} is not supported by this module": }
